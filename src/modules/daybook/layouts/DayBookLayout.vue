@@ -1,5 +1,4 @@
 <template>
-  <h1>Daybook Layout</h1>
   <Navbar />
 </template>
 
