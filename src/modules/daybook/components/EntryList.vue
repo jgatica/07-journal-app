@@ -7,17 +7,23 @@
       />
     </div>
     <div class="entry-scrollarea">
-      <h2
+      <Entry
         v-for="item in 100"
         :key="item"
-      >Entry</h2>
+      ></Entry>
     </div>
   </div>
 </template>
 
 <script>
+
+import {defineAsyncComponent} from "vue";
+
 export default {
-  name: "EntryList"
+  name: "EntryList",
+  components: {
+    Entry: defineAsyncComponent(()=> import(/* webpackChunkName: "Entry" */'@/modules/daybook/components/Entry.vue')),
+  }
 }
 </script>
 
