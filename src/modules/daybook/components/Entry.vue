@@ -2,15 +2,14 @@
   <div class="entry-container mb-3 pointer p-2"
        @click="$router.push({ name:'entry', params: { id:10 } })"
   >
-
     <div class="entry-title d-flex">
-      <span class="text-success fs-5 fw-bold">15</span>
-      <span class="mx-1 fs-5">Julio</span>
-      <span class="mx-2 fw-light">2023, jueves</span>
+      <span class="text-success fs-5 fw-bold">{{ date }}</span>
+      <span class="mx-1 fs-5">{{ date }}</span>
+      <span class="mx-2 fw-light">{{ date }}</span>
     </div>
 
     <div class="entry-description">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur deleniti minima ratione? Accusamus accusantium autem commodi fugiat inventore ipsa libero necessitatibus nemo, odit quibusdam, quis saepe totam velit, veniam.
+      {{ text }}
     </div>
 
   </div>
@@ -18,7 +17,24 @@
 
 <script>
 export default {
-  name: "Entry"
+  name: "Entry",
+  props: {
+    id: {
+      type:Number,
+      required:true,
+    },
+    date: {
+      type: String,
+      required: true,
+      default: function () { return new Date() },
+    },
+    text: {
+      type: String,
+    },
+    picture : {
+      type: String,
+    }
+  },
 }
 </script>
 

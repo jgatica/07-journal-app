@@ -8,8 +8,13 @@
     </div>
     <div class="entry-scrollarea">
       <Entry
-        v-for="item in 100"
-        :key="item"
+        v-for="entry in getEntriesByTerm"
+        :key="entry.id"
+        :id="entry.id"
+        :date="entry.date"
+        :text="entry.text"
+        :picture="entry.picture"
+
       ></Entry>
     </div>
   </div>
@@ -18,12 +23,16 @@
 <script>
 
 import {defineAsyncComponent} from "vue";
+import {mapGetters} from "vuex";
 
 export default {
   name: "EntryList",
   components: {
     Entry: defineAsyncComponent(()=> import(/* webpackChunkName: "Entry" */'@/modules/daybook/components/Entry.vue')),
-  }
+  },
+  computed: {
+    ...mapGetters('journal',['getEntriesByTerm']),
+  },
 }
 </script>
 

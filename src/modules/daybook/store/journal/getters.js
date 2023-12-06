@@ -2,7 +2,8 @@
 //   return state.
 // }
 
-export const getEntriesByTerm =  () => {
+export const getEntriesByTerm =  (state) => {
+  return state.entries
 }
 
 export const getEntryById =  () => {
