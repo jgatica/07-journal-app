@@ -27,7 +27,7 @@ export default {
   name: "EntryList",
   data() {
     return {
-      term: 'hola mundo'
+      term: '',
     }
   },
   components: {
