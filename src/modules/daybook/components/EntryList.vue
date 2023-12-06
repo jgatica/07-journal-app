@@ -4,6 +4,7 @@
       <input type="text"
              class="form-control"
              placeholder="Buscar entrada"
+             v-model="term"
       />
     </div>
     <div class="entry-scrollarea">
@@ -24,6 +25,11 @@ import {mapGetters} from "vuex";
 
 export default {
   name: "EntryList",
+  data() {
+    return {
+      term: 'hola mundo'
+    }
+  },
   components: {
     Entry: defineAsyncComponent(()=> import(/* webpackChunkName: "Entry" */'@/modules/daybook/components/Entry.vue')),
   },
