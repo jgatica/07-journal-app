@@ -27,7 +27,7 @@
     ></textarea>
   </div>
 
-  <Fab></Fab>
+  <Fab icon="fa-save"></Fab>
 
   <img
     src="https://www.robertlandscapes.com/wp-content/uploads/2014/11/landscape-322100_1280.jpg"
