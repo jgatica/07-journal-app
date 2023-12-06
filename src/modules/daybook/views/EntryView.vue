@@ -24,8 +24,7 @@
   <div class="d-flex flex-column px-3 h-75">
     <textarea
       placeholder="¿Qué sucedió hoy?"
-    >
-    </textarea>
+    ></textarea>
   </div>
 
   <Fab></Fab>
