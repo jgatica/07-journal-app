@@ -3,13 +3,13 @@
        @click="$router.push({ name:'entry', params: { id:10 } })"
   >
     <div class="entry-title d-flex">
-      <span class="text-success fs-5 fw-bold">{{ date }}</span>
-      <span class="mx-1 fs-5">{{ date }}</span>
-      <span class="mx-2 fw-light">{{ date }}</span>
+      <span class="text-success fs-5 fw-bold">{{ entry.id }}</span>
+      <span class="mx-1 fs-5">{{ entry.date }}</span>
+      <span class="mx-2 fw-light">{{ entry.picture }}</span>
     </div>
 
     <div class="entry-description">
-      {{ text }}
+      {{ entry.text }}
     </div>
 
   </div>
@@ -19,21 +19,10 @@
 export default {
   name: "Entry",
   props: {
-    id: {
-      type:Number,
-      required:true,
-    },
-    date: {
-      type: String,
+    entry: {
+      type: Object,
       required: true,
-      default: function () { return new Date() },
     },
-    text: {
-      type: String,
-    },
-    picture : {
-      type: String,
-    }
   },
 }
 </script>

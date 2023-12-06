@@ -10,10 +10,7 @@
       <Entry
         v-for="entry in getEntriesByTerm"
         :key="entry.id"
-        :id="entry.id"
-        :date="entry.date"
-        :text="entry.text"
-        :picture="entry.picture"
+        :entry="entry"
 
       ></Entry>
     </div>
