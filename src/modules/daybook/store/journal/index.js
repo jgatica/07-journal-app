@@ -1,7 +1,7 @@
-import state from "@/store/module-template/state";
-import * as actions from "@/store/module-template/actions";
-import * as getters from "@/store/module-template/getters";
-import * as mutations from "@/store/module-template/mutations";
+import state from "@/modules/daybook/store/journal/state";
+import * as actions from "@/modules/daybook/store/journal/actions";
+import * as getters from "@/modules/daybook/store/journal/getters";
+import * as mutations from "@/modules/daybook/store/journal/mutations";
 
 const journalModule = {
   namespaced: true,
