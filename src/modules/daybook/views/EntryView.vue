@@ -23,6 +23,7 @@
 
   <div class="d-flex flex-column px-3 h-75">
     <textarea
+      v-model="entry.text"
       placeholder="¿Qué sucedió hoy?"
     ></textarea>
   </div>
