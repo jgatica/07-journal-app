@@ -9,7 +9,7 @@
     </div>
 
     <div class="entry-description">
-      {{ entry.text }}
+      {{ shortText }}
     </div>
 
   </div>
@@ -22,6 +22,13 @@ export default {
     entry: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    shortText() {
+      return (this.entry.text.length > 130)
+        ? this.entry.text.substring(0, 130) + '...'
+        : this.entry.text
     },
   },
 }
