@@ -42,8 +42,17 @@ import {defineAsyncComponent} from "vue";
 
 export default {
   name: "EntryView",
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
   components: {
     Fab: defineAsyncComponent(()=> import(/* webpackChunkName: "Fab" */'@/modules/daybook/components/Fab.vue')),
+  },
+  created() {
+    console.log(this.id)
   },
 }
 
