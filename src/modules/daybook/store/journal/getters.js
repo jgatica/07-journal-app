@@ -2,9 +2,15 @@
 //   return state.
 // }
 
-export const getEntriesByTerm =  (state) => {
-  return state.entries
+export const getEntriesByTerm = (state) => (term = '') => {
+  if (term.length === 0) {
+    console.log(state.entries)
+
+    return state.entries
+  }
+
+  return state.entries.filter(entry => entry.text.toLowerCase().includes(term.toLowerCase()))
 }
 
-export const getEntryById =  () => {
+export const getEntryById = () => {
 }

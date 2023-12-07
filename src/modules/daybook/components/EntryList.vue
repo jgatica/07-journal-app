@@ -9,7 +9,7 @@
     </div>
     <div class="entry-scrollarea">
       <Entry
-        v-for="entry in getEntriesByTerm"
+        v-for="entry in entriesByTerm"
         :key="entry.id"
         :entry="entry"
 
@@ -35,6 +35,9 @@ export default {
   },
   computed: {
     ...mapGetters('journal',['getEntriesByTerm']),
+    entriesByTerm() {
+      return this.getEntriesByTerm(this.term)
+    },
   },
 }
 </script>
