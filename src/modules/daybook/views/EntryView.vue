@@ -85,6 +85,11 @@ export default {
       // console.log(this.entry)
     },
   },
+  watch: {
+    id(){
+      this.loadEntry()
+    },
+  },
   created() {
     // console.log(this.id)
     this.loadEntry()
