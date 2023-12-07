@@ -52,13 +52,22 @@ export default {
   components: {
     Fab: defineAsyncComponent(()=> import(/* webpackChunkName: "Fab" */'@/modules/daybook/components/Fab.vue')),
   },
+  data() {
+    return {
+      entry: null,
+    }
+  },
   computed: {
     ...mapGetters('journal', ['getEntryById'])
   },
   methods: {
     loadEntry(){
       const entry = this.getEntryById(this.id)
-      console.log(entry)
+      if (!entry) this.$router.push({ name: 'no-entry' })
+
+      this.entry = entry
+
+      console.log(this.entry)
     },
   },
   created() {
