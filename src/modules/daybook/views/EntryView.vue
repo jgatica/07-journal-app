@@ -39,6 +39,7 @@
 
 <script>
 import {defineAsyncComponent} from "vue";
+import {mapGetters} from "vuex";
 
 export default {
   name: "EntryView",
@@ -51,8 +52,18 @@ export default {
   components: {
     Fab: defineAsyncComponent(()=> import(/* webpackChunkName: "Fab" */'@/modules/daybook/components/Fab.vue')),
   },
+  computed: {
+    ...mapGetters('journal', ['getEntryById'])
+  },
+  methods: {
+    loadEntry(){
+      const entry = this.getEntryById(this.id)
+      console.log(entry)
+    },
+  },
   created() {
-    console.log(this.id)
+    // console.log(this.id)
+    this.loadEntry()
   },
 }
 
