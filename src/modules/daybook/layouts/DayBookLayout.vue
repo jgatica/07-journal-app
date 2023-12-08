@@ -12,6 +12,7 @@
 
 <script>
 import {defineAsyncComponent} from "vue";
+import {mapActions} from "vuex";
 
 export default {
   name: "DayBookLayouts",
@@ -19,6 +20,12 @@ export default {
     EntryList: defineAsyncComponent(()=> import(/* webpackChunkName: "EntryList" */'@/modules/daybook/components/EntryList.vue')),
     Navbar : defineAsyncComponent(() => import(/* webpackChunkName: "Navbar" */ '@/modules/daybook/components/Navbar.vue'))
   },
+  methods: {
+    ...mapActions('journal', ['loadEntries']),
+  },
+  created() {
+    this.loadEntries()
+  }
 }
 </script>
 
