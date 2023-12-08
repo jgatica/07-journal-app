@@ -30,7 +30,10 @@
     ></textarea>
     </div>
 
-    <Fab icon="fa-save"></Fab>
+    <Fab
+      icon="fa-save"
+      @on:click="saveEntry"
+    ></Fab>
 
     <img
       src="https://www.robertlandscapes.com/wp-content/uploads/2014/11/landscape-322100_1280.jpg"
@@ -83,9 +86,9 @@ export default {
       if (!entry) this.$router.push({ name: 'no-entry' })
 
       this.entry = entry
-      console.log(entry.text)
-
-      // console.log(this.entry)
+    },
+    saveEntry: function (event) {
+      console.log('Guardando entrada')
     },
   },
   watch: {
