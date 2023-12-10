@@ -81,7 +81,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('journal', ['updateEntries']),
+    ...mapActions('journal', ['updateEntry']),
     loadEntry(){
       const entry = this.getEntryById(this.id)
       if (!entry) this.$router.push({ name: 'no-entry' })
@@ -89,7 +89,7 @@ export default {
       this.entry = entry
     },
     async saveEntry (event) {
-      this.$store.dispatch('journal/updateEntries', this.entry)
+      await this.$store.dispatch('journal/updateEntry', this.entry)
     },
   },
   watch: {
