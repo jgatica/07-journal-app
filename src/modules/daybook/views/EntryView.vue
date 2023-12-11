@@ -100,8 +100,16 @@ export default {
 
       this.entry = entry
     },
-    saveEntry (event) {
-      this.updateEntry(this.entry)
+    async saveEntry (event) {
+      if (this.entry.id) {
+        // Actualizar
+        console.log('Actualizar')
+        await this.updateEntry(this.entry);
+      } else {
+        // Crear una nueva entrada
+        console.log('Crear una nueva entrada')
+
+      }
     },
   },
   watch: {
