@@ -83,8 +83,20 @@ export default {
   methods: {
     ...mapActions('journal', ['updateEntry']),
     loadEntry(){
-      const entry = this.getEntryById(this.id)
-      if (!entry) this.$router.push({ name: 'no-entry' })
+
+      let entry;
+
+      if (this.id === 'new') {
+
+        entry = {
+          text: '',
+          date: new Date().getTime(),
+        }
+
+      } else {
+        entry = this.getEntryById(this.id);
+        if (!entry) this.$router.push({ name: 'no-entry' })
+      }
 
       this.entry = entry
     },

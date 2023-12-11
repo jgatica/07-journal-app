@@ -4,7 +4,7 @@
       No hay nada seleccionado
     </h1>
   </div>
-  <Fab></Fab>
+  <Fab @on:click="createNewEntry"></Fab>
 </template>
 
 <script>
@@ -14,7 +14,12 @@ export default {
   name: "NoEntrySelected",
   components: {
     Fab: defineAsyncComponent(()=> import(/* webpackChunkName: "Fab" */'@/modules/daybook/components/Fab.vue')),
-  }
+  },
+  methods: {
+    createNewEntry() {
+      this.$router.push({ name: 'entry', params: { id: 'new' } })
+    },
+  },
 }
 </script>
 
