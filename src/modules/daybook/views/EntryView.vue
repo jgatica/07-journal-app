@@ -88,8 +88,8 @@ export default {
 
       this.entry = entry
     },
-    async saveEntry (event) {
-      await this.$store.dispatch('journal/updateEntry', this.entry)
+    saveEntry (event) {
+      this.updateEntry(this.entry)
     },
   },
   watch: {
