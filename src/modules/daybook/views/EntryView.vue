@@ -160,7 +160,9 @@ export default {
     onSelectedImage(event) {
       const file = event.target.files[0]
 
+      // Entrara si cancela
       if (!file) {
+        this.localImage = null
         return
       }
 
