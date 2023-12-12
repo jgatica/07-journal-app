@@ -12,6 +12,9 @@
       <input
         type="file"
         @change="onSelectedImage"
+        v-show="false"
+        ref="imageSelector"
+        accept="image/jpeg, image/png"
       >
       <div>
         <button
@@ -20,7 +23,10 @@
           class="btn btn-danger mx-2">
           Borrar
         </button>
-        <button class="btn btn-primary">
+        <button
+          @click="onSelecteImage"
+          class="btn btn-primary"
+        >
           Subir foto
           <i class="fa fa-upload"></i>
         </button>
@@ -169,11 +175,15 @@ export default {
       }
 
       this.file = file
-      
+
       const fr = new FileReader()
       fr.onload = () => this.localImage = fr.result
       fr.readAsDataURL(file)
 
+    },
+    onSelecteImage() {
+      // console.log(this.$refs)
+      this.$refs.imageSelector.click()
     },
   },
   watch: {
