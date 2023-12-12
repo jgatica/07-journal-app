@@ -49,7 +49,7 @@
     ></Fab>
 
     <img
-      v-if="entry.picture"
+      v-if="entry.picture && !localImage"
       :src="entry.picture"
       alt="entry-picture"
       class="img-thumbnail"
