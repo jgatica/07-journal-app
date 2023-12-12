@@ -109,6 +109,8 @@ export default {
   methods: {
     ...mapActions('journal', ['updateEntry', 'createEntry', 'deleteEntry']),
     loadEntry(){
+      this.localImage = null
+      this.file = null
 
       let entry;
 
