@@ -80,6 +80,7 @@ export default {
     return {
       entry: null,
       localImage: null,
+      file: null,
     }
   },
   computed: {
@@ -163,9 +164,12 @@ export default {
       // Entrara si cancela
       if (!file) {
         this.localImage = null
+        this.file = null
         return
       }
 
+      this.file = file
+      
       const fr = new FileReader()
       fr.onload = () => this.localImage = fr.result
       fr.readAsDataURL(file)
