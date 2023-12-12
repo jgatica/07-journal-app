@@ -48,11 +48,12 @@
       @on:click="saveEntry"
     ></Fab>
 
-<!--    <img-->
-<!--      src="https://www.robertlandscapes.com/wp-content/uploads/2014/11/landscape-322100_1280.jpg"-->
-<!--      alt="entry-picture"-->
-<!--      class="img-thumbnail"-->
-<!--    >-->
+    <img
+      v-if="entry.picture"
+      :src="entry.picture"
+      alt="entry-picture"
+      class="img-thumbnail"
+    >
 
     <img
       v-if="localImage"
@@ -70,6 +71,7 @@ import {mapActions,mapGetters} from "vuex";
 import Swal from "sweetalert2";
 
 import getDayMonthYear from "@/modules/daybook/helpers/getDayMonthYear";
+import uploadImage from "@/modules/daybook/helpers/uploadImage";
 
 export default {
   name: "EntryView",
@@ -130,6 +132,9 @@ export default {
         allowOutsideClick: false,
       })
       Swal.showLoading()
+
+      const picture = await uploadImage(this.file)
+      this.entry.picture = picture
 
       if (this.entry.id) {
         // Actualizar
