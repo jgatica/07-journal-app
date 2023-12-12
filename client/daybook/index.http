@@ -1,0 +1,14 @@
+GET {{host}}/entries.json
+Accept: */*
+Content-Type: application/json
+###
+
+POST {{host}}/entries.json
+Accept: */*
+Cache-Control: no-cache
+Content-Type: Application/Json
+
+{
+  "date": "Sat Jul 19 2021",
+  "text": "hola6"
+}
