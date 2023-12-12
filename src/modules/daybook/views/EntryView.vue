@@ -50,6 +50,8 @@
 <script>
 import {defineAsyncComponent} from "vue";
 import {mapActions,mapGetters} from "vuex";
+import Swal from "sweetalert2";
+
 import getDayMonthYear from "@/modules/daybook/helpers/getDayMonthYear";
 
 export default {
@@ -104,6 +106,12 @@ export default {
       this.entry = entry
     },
     async saveEntry (event) {
+      new Swal({
+        title: 'Espere por favor',
+        allowOutsideClick: false,
+      })
+      Swal.showLoading()
+
       if (this.entry.id) {
         // Actualizar
         await this.updateEntry(this.entry);
@@ -114,6 +122,8 @@ export default {
         this.$router.push({ name: 'entry', params: { id: `${idx}` } })
 
       }
+
+      Swal.fire('Guardado', 'Entrada registrada con éxito', 'success')
     },
     async onDeleteEntry() {
       await this.deleteEntry(this.entry.id)
