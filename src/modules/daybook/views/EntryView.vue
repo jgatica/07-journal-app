@@ -9,6 +9,10 @@
         <span class="mx-2 fs-4 fw-light">{{ yearDay }}</span>
       </div>
 
+      <input
+        type="file"
+        @change="onSelectedImage"
+      >
       <div>
         <button
           v-if="entry.id"
@@ -38,8 +42,15 @@
       @on:click="saveEntry"
     ></Fab>
 
+<!--    <img-->
+<!--      src="https://www.robertlandscapes.com/wp-content/uploads/2014/11/landscape-322100_1280.jpg"-->
+<!--      alt="entry-picture"-->
+<!--      class="img-thumbnail"-->
+<!--    >-->
+
     <img
-      src="https://www.robertlandscapes.com/wp-content/uploads/2014/11/landscape-322100_1280.jpg"
+      v-if="localImage"
+      :src="localImage"
       alt="entry-picture"
       class="img-thumbnail"
     >
@@ -68,6 +79,7 @@ export default {
   data() {
     return {
       entry: null,
+      localImage: null,
     }
   },
   computed: {
@@ -144,6 +156,18 @@ export default {
 
         await Swal.fire('Eliminado', '', 'success')
       }
+    },
+    onSelectedImage(event) {
+      const file = event.target.files[0]
+
+      if (!file) {
+        return
+      }
+
+      const fr = new FileReader()
+      fr.onload = () => this.localImage = fr.result
+      fr.readAsDataURL(file)
+
     },
   },
   watch: {
