@@ -22,5 +22,7 @@ export const updateEntries = () => {
 }
 
 export const addEntry = (state, entry) => {
-  state.entries.unshift(entry)
+  // state.entries.unshift(entry)
+
+  state.entries = [entry,...state.entries]
 }
