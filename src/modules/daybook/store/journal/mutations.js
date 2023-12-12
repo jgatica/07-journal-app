@@ -2,6 +2,9 @@
 //
 // }
 
+import state from "@/modules/daybook/store/journal/state";
+import entry from "@/modules/daybook/components/Entry.vue";
+
 export const setEntries = (state, entries) => {
   state.entries = [...state.entries, ...entries]
   state.isLoading = false
@@ -18,6 +21,6 @@ export const updateEntries = () => {
 
 }
 
-export const addEntry = () => {
-
+export const addEntry = (state, entry) => {
+  state.entries.unshift(entry)
 }

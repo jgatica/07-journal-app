@@ -81,7 +81,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('journal', ['updateEntry']),
+    ...mapActions('journal', ['updateEntry', 'createEntry']),
     loadEntry(){
 
       let entry;
@@ -103,11 +103,12 @@ export default {
     async saveEntry (event) {
       if (this.entry.id) {
         // Actualizar
-        console.log('Actualizar')
         await this.updateEntry(this.entry);
       } else {
         // Crear una nueva entrada
-        console.log('Crear una nueva entrada')
+        const idx = await this.createEntry(this.entry)
+        // idx es el nuevo id
+        this.$router.push({ name: 'entry', params: { id: `${idx}` } })
 
       }
     },

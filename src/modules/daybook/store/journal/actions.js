@@ -1,4 +1,6 @@
 import journalApi from "@/api/journalApi";
+import entry from "@/modules/daybook/components/Entry.vue";
+import data from "bootstrap/js/src/dom/data";
 
 export const loadEntries = async ({commit}) => {
   const {data} = await journalApi.get('/entries.json')
@@ -23,4 +25,17 @@ export const updateEntry = async ({ commit }, entry) => {
 
   commit('updateEntry', {...entry})
 
+}
+
+export const createEntry = async({commit} , entry) => {
+
+  entry.date = (new Date(entry.date)).toDateString()
+
+  const {data} = await journalApi.post('/entries.json', entry)
+
+  entry.id = data.name
+
+  commit('addEntry', {...entry})
+
+  return entry.id
 }
