@@ -123,7 +123,7 @@ export default {
 
       }
 
-      Swal.fire('Guardado', 'Entrada registrada con éxito', 'success')
+      await Swal.fire('Guardado', 'Entrada registrada con éxito', 'success')
     },
     async onDeleteEntry() {
       await this.deleteEntry(this.entry.id)
