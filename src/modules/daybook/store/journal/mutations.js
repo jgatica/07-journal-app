@@ -25,11 +25,6 @@ export const addEntry = (state, entry) => {
   state.entries = [entry,...state.entries]
 }
 
-export const deleteEntry = async (state, entry) => {
-  const idx = state.entries.map(e => e.id).indexOf(entry.id)
-
-  if (idx !== -1) {
-    state.entries.splice(idx, 1)
-  }
-
+export const deleteEntry = async (state, id) => {
+  state.entries = state.entries.filter(entry => entry.id !== id )
 }
