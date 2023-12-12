@@ -10,7 +10,10 @@
       </div>
 
       <div>
-        <button class="btn btn-danger mx-2">
+        <button
+          v-if="entry.id"
+          @click="onDeleteEntry"
+          class="btn btn-danger mx-2">
           Borrar
         </button>
         <button class="btn btn-primary">
@@ -81,7 +84,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('journal', ['updateEntry', 'createEntry']),
+    ...mapActions('journal', ['updateEntry', 'createEntry', 'deleteEntry']),
     loadEntry(){
 
       let entry;
@@ -111,6 +114,12 @@ export default {
         this.$router.push({ name: 'entry', params: { id: `${idx}` } })
 
       }
+    },
+    async onDeleteEntry() {
+      console.log('onDeleteEntry', this.entry)
+      await this.deleteEntry(this.entry)
+      this.$router.push({ name: 'no-entry' })
+
     },
   },
   watch: {

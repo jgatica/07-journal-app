@@ -2,8 +2,6 @@
 //
 // }
 
-import state from "@/modules/daybook/store/journal/state";
-import entry from "@/modules/daybook/components/Entry.vue";
 
 export const setEntries = (state, entries) => {
   state.entries = [...state.entries, ...entries]
@@ -25,4 +23,13 @@ export const addEntry = (state, entry) => {
   // state.entries.unshift(entry)
 
   state.entries = [entry,...state.entries]
+}
+
+export const deleteEntry = async (state, entry) => {
+  const idx = state.entries.map(e => e.id).indexOf(entry.id)
+
+  if (idx !== -1) {
+    state.entries.splice(idx, 1)
+  }
+
 }

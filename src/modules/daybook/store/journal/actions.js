@@ -41,3 +41,8 @@ export const createEntry = async({commit} , entry) => {
 
   return data.name
 }
+
+export const deleteEntry = async ({commit}, entry) => {
+  await journalApi.delete(`/entries/${entry.id}.json`)
+  commit('deleteEntry', entry)
+}

@@ -1,8 +1,8 @@
 GET {{host}}/entries.json
 Accept: */*
 Content-Type: application/json
-###
 
+### agregar entry
 POST {{host}}/entries.json
 Accept: */*
 Cache-Control: no-cache
@@ -12,3 +12,6 @@ Content-Type: Application/Json
   "date": "Sat Jul 19 2021",
   "text": "hola6"
 }
+
+### Eliminar entry
+DELETE {{host}}/entries/-NlQtMMmxhEXHFrQHmhn.json
