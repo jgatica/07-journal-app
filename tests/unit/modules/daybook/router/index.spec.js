@@ -2,7 +2,7 @@ import daybookRouter from "@/modules/daybook/router";
 
 describe('Pruebas en el router module del Daybook', () => {
 
-  it('el router debe de tener esta configuración', () => {
+  it('el router debe de tener esta configuración', async () => {
     expect(daybookRouter).toMatchObject({
       name: 'daybook',
       component: expect.any(Function),
@@ -21,6 +21,7 @@ describe('Pruebas en el router module del Daybook', () => {
       ],
     }) // Fin expect
 
+    expect( ( await  daybookRouter.children[0].component()).default.name ).toBe('NoEntrySelected')
   });
 
 });
