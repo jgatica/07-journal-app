@@ -30,4 +30,14 @@ describe('Pruebas en el router module del Daybook', () => {
 
   });
 
+  it('debe retornar el id de la ruta', () => {
+    const route = {
+      params: {
+        id: 'ABC-123'
+      }
+    }
+
+    expect(daybookRouter.children[1].props(route)).toEqual({ id: 'ABC-123' })
+  });
+
 });
