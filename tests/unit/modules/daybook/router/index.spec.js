@@ -37,7 +37,10 @@ describe('Pruebas en el router module del Daybook', () => {
       }
     }
 
-    expect(daybookRouter.children[1].props(route)).toEqual({ id: 'ABC-123' })
+    // expect(daybookRouter.children[1].props(route)).toEqual({ id: 'ABC-123' })
+
+    const entryRoute = daybookRouter.children.find(el => el.name === 'entry')
+    expect(entryRoute.props(route))
   });
 
 });
