@@ -29,7 +29,14 @@ describe('Pruebas Helper uploadImage', () => {
 
     const segments = url.split('/')
     const imagenId = segments[segments.length - 1].replace('.png', '')
-    await cloudinary.v2.api.delete_resources(`images/${imagenId}`)
+    // Forma 1 para eliminar
+    // await cloudinary.v2.api.delete_resources(`images/${imagenId}`)
+
+    // Forma 2 para eliminar (sale en la instruccion de cloudinary)
+    await cloudinary.v2.api
+      .delete_resources(`images/${imagenId}`,
+        { type: 'upload', resource_type: 'image' })
+      .then(console.log);
   });
 
 });
