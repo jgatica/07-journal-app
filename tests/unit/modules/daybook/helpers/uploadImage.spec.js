@@ -13,7 +13,7 @@ cloudinary.config({
 describe('Pruebas Helper uploadImage', () => {
 
   it('debe de cargar un archivo y retornar el url', async () => {
-    const {data} = await axios.get('https://res.cloudinary.com/dejzmy2qp/image/upload/v1702384200/images/kmkbgxmahecexg6l8cz6.jpg', {
+    const {data} = await axios.get('https://res.cloudinary.com/dejzmy2qp/image/upload/v1702715675/images/abc.png', {
       responseType: 'arraybuffer'
     })
 
@@ -25,6 +25,11 @@ describe('Pruebas Helper uploadImage', () => {
     // Con que venga string es mas que suficiente
     expect(typeof url).toBe('string')
 
+    // Tomar el id
+
+    const segments = url.split('/')
+    const imagenId = segments[segments.length - 1].replace('.png', '')
+    await cloudinary.v2.api.delete_resources(`images/${imagenId}`)
   });
 
 });
