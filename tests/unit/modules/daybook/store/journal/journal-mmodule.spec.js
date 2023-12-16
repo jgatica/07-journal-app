@@ -11,3 +11,11 @@ const createVuexStore = (initialState) => createStore({
   }
 }) // Fin createVuexStore
 
+describe('Vuex - Pruebas en el Journal Module', () => {
+
+  it('este es el estado inicial, debe tener este state ', () => {
+    const store = createVuexStore(journalState)
+    console.log(store.state)
+  });
+
+});

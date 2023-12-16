@@ -11,3 +11,9 @@ exports[`Pruebas en el AboutView debe renderizar el componente correctamente 1`]
   <h1>This is an about page</h1>
 </div>
 `;
+
+exports[`Pruebas sobre AboutView debe coincidir con snapshot 1`] = `
+<div class="about">
+  <h1>This is an about page</h1>
+</div>
+`;
