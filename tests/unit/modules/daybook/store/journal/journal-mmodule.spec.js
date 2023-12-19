@@ -21,4 +21,17 @@ describe('Vuex - Pruebas en el Journal Module', () => {
     expect(entries).toEqual(journalState.entries)
   });
 
+  it('se agregar 3 entradas - mutation: setEntries', () => {
+    const store = createVuexStore({
+      isLoading: true,
+      entries: [],
+    })
+
+    store.commit('journal/setEntries', journalState.entries)
+
+    expect(store.state.journal.entries.length).toBe(3)
+    expect(store.state.journal.isLoading).toBeFalsy()
+
+  });
+
 });
