@@ -77,4 +77,11 @@ describe('Vuex - Pruebas en el Journal Module', () => {
 
   });
 
+  it.only('Getters: getEntriesByTerm getEntryById', () => {
+    const store = createVuexStore(journalState)
+
+    console.log(store.getters['journal/getEntriesByTerm']('Ejemplo 2'))
+
+  });
+
 });
