@@ -50,4 +50,31 @@ describe('Vuex - Pruebas en el Journal Module', () => {
 
   });
 
+  it('mutation: addEntry y deleteEntry ', () => {
+    const store = createVuexStore(journalState)
+
+    const entry = {
+      id: 'ABC-123',
+      date: 1702733088465,
+      text: 'Ejemplo modificado',
+    }
+
+    store.commit('journal/addEntry', entry)
+
+    // expect de 4 entradas
+    expect(store.state.journal.entries.length).toBe(4)
+    // expect que exista el id 'ABC-123'
+    const resultAdd = store.state.journal.entries.map(el => el.id)
+    expect(resultAdd.includes(entry.id)).toBe(true)
+
+    // eliminar el objeto con id 'ABC-123'
+    store.commit('journal/deleteEntry', entry.id)
+    // expect 3 entradas
+    expect(store.state.journal.entries.length).toBe(3)
+    // no debe existir id 'ABC-123'
+    const resultDel = store.state.journal.entries.map(el => el.id)
+    expect(resultDel.includes(entry.id)).toBe(false)
+
+  });
+
 });
