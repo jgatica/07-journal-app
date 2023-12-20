@@ -34,4 +34,20 @@ describe('Vuex - Pruebas en el Journal Module', () => {
 
   });
 
+  it('actualizar entrada mutation: updateEntry', () => {
+    const store = createVuexStore(journalState)
+
+    const updatedEntry = {
+      id: '-Nlmoug_xoyMBm3jZe40',
+      date: 1702733088465,
+      text: 'Ejemplo modificado',
+    }
+
+    store.commit('journal/updateEntry', updatedEntry)
+
+    expect(store.state.journal.entries.length).toBe(3)
+    expect(store.state.journal.entries.find(el => el.id === updatedEntry.id)).toEqual(updatedEntry)
+
+  });
+
 });
