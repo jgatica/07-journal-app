@@ -119,4 +119,29 @@ describe('Vuex - Pruebas en el Journal Module', () => {
     })
 
   });
+
+  it('actions: createEntry y deleteEntry', async () => {
+    const store = createVuexStore(journalState)
+
+    const entry = {
+      date: 1802733088001,
+      text: 'Ejemplo',
+      picture:'aca va el enlace',
+    }
+
+    const respId = await store.dispatch('journal/createEntry', entry)
+
+    // Id creado debe ser de tipo string
+    expect(typeof respId).toBe('string')
+
+    // La nueva entrada debe existir
+    expect(store.state.journal.entries.find(el => el.id === respId)).toBeTruthy()
+
+    await store.dispatch('journal/deleteEntry', respId)
+
+    // La nueva entrada NO debe existir
+    expect(store.state.journal.entries.find(el => el.id === respId)).toBeFalsy()
+
+
+  });
 });
