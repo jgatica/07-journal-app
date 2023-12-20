@@ -46,4 +46,11 @@ describe('Pruebas componente Entry', () => {
 
   });
 
+  it('pruebas en las propiedades computadas ', () => {
+    expect(wrapper.vm.day).toBe(16)
+    expect(wrapper.vm.month).toBe('Diciembre')
+    expect(wrapper.vm.yearDay).toBe('2023, Sábado')
+    console.log(wrapper.vm.day, wrapper.vm.month, wrapper.vm.yearDay)
+  });
+
 });
