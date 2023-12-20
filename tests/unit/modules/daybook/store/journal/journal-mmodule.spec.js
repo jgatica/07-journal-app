@@ -106,13 +106,17 @@ describe('Vuex - Pruebas en el Journal Module', () => {
       id: '-Nlmp31-N1n1mqnyhSj-',
       date: 1702733088465,
       text: 'Ejemplo tres',
+      otroCampo: true,
     }
 
     await store.dispatch('journal/updateEntry', entry)
 
     expect(store.state.journal.entries.length).toBe(3)
-    expect(store.state.journal.entries.find(el=>el.id===entry.id)).toEqual(entry)
-
+    expect(store.state.journal.entries.find(el => el.id === entry.id)).toEqual({
+      id: '-Nlmp31-N1n1mqnyhSj-',
+      date: 1702733088465,
+      text: 'Ejemplo tres',
+    })
 
   });
 });
