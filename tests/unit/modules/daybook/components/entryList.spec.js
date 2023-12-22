@@ -13,11 +13,11 @@ describe('Pruebas al componente EntryList', () => {
     namespaced: true,
     getters: {
       getEntriesByTerm: getEntriesByTerm,
-      state: ()=> ({
-        isLoading: false,
-        entries: testJournalState.entries,
-      })
-    }
+    },
+    state: ()=> ({
+      isLoading: false,
+      entries: testJournalState.entries,
+    })
   }
 
   const store = createStore({
@@ -26,8 +26,16 @@ describe('Pruebas al componente EntryList', () => {
     }
   })
 
+  const wrapper = shallowMount(EntryList, {
+    global: {
+      mocks: {
+        // TODO: $router:
+      },
+      plugins: [store],
+    },
+  })
 
-  it('should ', () => {
-
+  it('debe llamar al getEntriesByTerm sin termino y mostrar 3 entradas ', () => {
+    console.log(wrapper.html())
   });
 });
