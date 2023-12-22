@@ -49,4 +49,12 @@ describe('Pruebas al componente EntryList', () => {
     expect(wrapper.findAll('entry-stub').length).toBe(1)
   });
 
+  it('El botón "nuevo" debe redireccionar a /new', () => {
+
+    wrapper.find('button').trigger('click')
+
+    expect(mockRouter.push).toHaveBeenCalledWith({ name: 'entry', params: { id: 'new' } })
+
+  });
+
 });
