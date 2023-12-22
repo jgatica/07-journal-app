@@ -54,6 +54,8 @@ describe('Pruebas en el EntryView', () => {
       },
     })
 
+    expect(mockRouter.push).toHaveBeenCalledWith({name: 'no-entry'})
+
   });
 
 });
