@@ -17,10 +17,14 @@ const createVuexStore = (initialState) => createStore({
 describe('Pruebas al componente EntryList', () => {
 
   const store = createVuexStore(journalState)
+  const mockRouter = {
+    push: jest.fn(),
+  }
+
   const wrapper = shallowMount(EntryList, {
     global: {
       mocks: {
-        // TODO: $router:
+        $router: mockRouter,
       },
       plugins: [store],
     },
