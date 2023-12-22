@@ -42,8 +42,11 @@ describe('Pruebas al componente EntryList', () => {
     expect(wrapper.html()).toMatchSnapshot()
   });
 
-  it('debe llamar al getEntriesByTerm y filtrar las entradas', () => {
-    
+  it('debe llamar al getEntriesByTerm y filtrar las entradas', async () => {
+    const input = wrapper.find('input')
+    await input.setValue('plo 2')
+
+    expect(wrapper.findAll('entry-stub').length).toBe(1)
   });
 
 });
