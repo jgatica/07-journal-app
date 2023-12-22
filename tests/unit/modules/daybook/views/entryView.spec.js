@@ -58,4 +58,11 @@ describe('Pruebas en el EntryView', () => {
 
   });
 
+  it('debe mostrar entrada correctamente', () => {
+
+    expect(wrapper.html()).toMatchSnapshot()
+    expect(mockRouter.push).not.toHaveBeenCalledWith()
+
+  });
+
 });
