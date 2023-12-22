@@ -21,16 +21,29 @@ describe('Pruebas al componente EntryList', () => {
     push: jest.fn(),
   }
 
-  const wrapper = shallowMount(EntryList, {
-    global: {
-      mocks: {
-        $router: mockRouter,
+  let wrapper
+
+  beforeEach(()=>{
+    jest.clearAllMocks()
+
+    wrapper = shallowMount(EntryList, {
+      global: {
+        mocks: {
+          $router: mockRouter,
+        },
+        plugins: [store],
       },
-      plugins: [store],
-    },
+    })
+
   })
 
   it('debe llamar al getEntriesByTerm sin termino y mostrar 3 entradas ', () => {
-    console.log(wrapper.html())
+    expect(wrapper.findAll('entry-stub').length).toBe(3)
+    expect(wrapper.html()).toMatchSnapshot()
   });
+
+  it('debe llamar al getEntriesByTerm y filtrar las entradas', () => {
+    
+  });
+
 });
