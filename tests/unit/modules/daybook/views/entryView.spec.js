@@ -28,6 +28,9 @@ describe('Pruebas en el EntryView', () => {
     jest.clearAllMocks()
 
     wrapper = shallowMount(EntryView, {
+      props: {
+        id: '-Nlmoug_xoyMBm3jZe40'
+      },
       global: {
         mocks: {
           $router: mockRouter,
@@ -39,6 +42,17 @@ describe('Pruebas en el EntryView', () => {
   })
 
   it('debe sacar al usuario porque el id no existe', () => {
+    wrapper = shallowMount(EntryView, {
+      props: {
+        id: 'Este id no existe en el STORE'
+      },
+      global: {
+        mocks: {
+          $router: mockRouter,
+        },
+        plugins: [store],
+      },
+    })
 
   });
 
