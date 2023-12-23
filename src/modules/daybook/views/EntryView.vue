@@ -166,8 +166,9 @@ export default {
           allowOutsideClick: false,
         })
         Swal.showLoading()
-        await this.deleteEntry(this.entry.id)
-        this.$router.push({ name: 'no-entry' })
+        console.log('A punto de eliminar')
+        // await this.deleteEntry(this.entry.id)
+        // this.$router.push({ name: 'no-entry' })
 
         await Swal.fire('Eliminado', '', 'success')
       }
