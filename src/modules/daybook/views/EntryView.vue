@@ -168,7 +168,7 @@ export default {
         Swal.showLoading()
         console.log('A punto de eliminar')
         // await this.deleteEntry(this.entry.id)
-        // this.$router.push({ name: 'no-entry' })
+        this.$router.push({ name: 'no-entry' })
 
         await Swal.fire('Eliminado', '', 'success')
       }

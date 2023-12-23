@@ -74,9 +74,9 @@ describe('Pruebas en el EntryView', () => {
 
   });
 
-  it('debe borrar la entrada y salida', () => {
+  it('debe borrar la entrada y salida', (done) => {
 
-    Swal.fire.mockReturnValueOnce( Promise.resolve({ isConfirmed: true })  )
+    Swal.fire.mockReturnValueOnce(Promise.resolve({isConfirmed: true}))
 
     wrapper.find('.btn-danger').trigger('click')
 
@@ -86,6 +86,11 @@ describe('Pruebas en el EntryView', () => {
       showDenyButton: true,
       confirmButtonText: 'Si, estoy seguro',
     })
+
+    setTimeout(()=> {
+      expect(mockRouter.push).toHaveBeenCalled()
+      done()
+    }, 1)
 
   });
 
