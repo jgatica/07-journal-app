@@ -70,6 +70,8 @@ describe('Pruebas en el EntryView', () => {
     expect(wrapper.html()).toMatchSnapshot()
     expect(mockRouter.push).not.toHaveBeenCalledWith()
 
+    //
+
   });
 
   it('debe borrar la entrada y salida', () => {
@@ -77,6 +79,14 @@ describe('Pruebas en el EntryView', () => {
     Swal.fire.mockReturnValueOnce( Promise.resolve({ isConfirmed: true })  )
 
     wrapper.find('.btn-danger').trigger('click')
+
+    expect(Swal.fire).toHaveBeenCalledWith({
+      title: '¿Está seguro?',
+      text: 'Una vez borrado, no se puede recuperar',
+      showDenyButton: true,
+      confirmButtonText: 'Si, estoy seguro',
+    })
+
   });
 
 });
