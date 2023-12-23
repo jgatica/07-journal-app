@@ -65,4 +65,8 @@ describe('Pruebas en el EntryView', () => {
 
   });
 
+  it('debe borrar la entrada y salida', () => {
+    wrapper.find('.btn-danger').trigger('click')
+  });
+
 });
