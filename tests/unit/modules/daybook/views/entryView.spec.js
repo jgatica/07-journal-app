@@ -89,6 +89,7 @@ describe('Pruebas en el EntryView', () => {
       confirmButtonText: 'Si, estoy seguro',
     })
 
+    expect(store.dispatch).toHaveBeenCalledWith("journal/deleteEntry", "-Nlmoug_xoyMBm3jZe40")
     expect(mockRouter.push).toHaveBeenCalled()
 
   });
