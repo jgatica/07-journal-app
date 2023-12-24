@@ -25,6 +25,7 @@ jest.mock('sweetalert2', () => ({
 describe('Pruebas en el EntryView', () => {
 
   const store = createVuexStore(journalState)
+  store.dispatch = jest.fn()
   const mockRouter = {
     push: jest.fn(),
   }
