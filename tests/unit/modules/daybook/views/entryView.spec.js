@@ -74,11 +74,12 @@ describe('Pruebas en el EntryView', () => {
 
   });
 
-  it('debe borrar la entrada y salida', (done) => {
+  it('debe borrar la entrada y salida', async () => {
 
     Swal.fire.mockReturnValueOnce(Promise.resolve({isConfirmed: true}))
 
-    wrapper.find('.btn-danger').trigger('click')
+
+    await wrapper.find('.btn-danger').trigger('click')
 
     expect(Swal.fire).toHaveBeenCalledWith({
       title: '¿Está seguro?',
@@ -87,10 +88,7 @@ describe('Pruebas en el EntryView', () => {
       confirmButtonText: 'Si, estoy seguro',
     })
 
-    setTimeout(()=> {
-      expect(mockRouter.push).toHaveBeenCalled()
-      done()
-    }, 1)
+    expect(mockRouter.push).toHaveBeenCalled()
 
   });
 
