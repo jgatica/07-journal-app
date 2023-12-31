@@ -37,9 +37,11 @@
 
 <script>
 import { ref } from 'vue'
+import useAuth from '@/modules/auth/composables/useAuth'
 
 export default {
   setup () {
+    const { createUser } = useAuth()
     const userForm = ref({
       name: '',
       email: '',
@@ -50,7 +52,7 @@ export default {
       userForm,
 
       onSubmit: async () => {
-        console.log(userForm.value)
+        await createUser(userForm.value)
       },
     }
   },//Fin setup
