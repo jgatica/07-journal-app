@@ -3,7 +3,7 @@ import { useStore } from 'vuex'
 const useAuth = () => {
   const store = useStore()
   const createUser = async (user) => {
-    console.log(user)
+    return await store.dispatch('auth/createUser', user)
   }
 
   return {
