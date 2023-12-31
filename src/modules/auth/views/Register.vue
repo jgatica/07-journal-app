@@ -2,7 +2,10 @@
   <span class="login100-form-title p-b-41">
     Registro
   </span>
-  <form class="login100-form validate-form p-b-33 p-t-5">
+  <form
+    @submit.prevent="onSubmit"
+    class="login100-form validate-form p-b-33 p-t-5"
+  >
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese su nombre">
       <input v-model="userForm.name" class="input100" type="text" placeholder="Nombre" required>
@@ -20,7 +23,7 @@
     </div>
 
     <div class="container-login100-form-btn m-t-32">
-      <button class="login100-form-btn">
+      <button type="submit" class="login100-form-btn">
         Crear cuenta
       </button>
 
@@ -33,7 +36,7 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 export default {
   setup () {
@@ -45,6 +48,10 @@ export default {
 
     return {
       userForm,
+
+      onSubmit: async () => {
+        console.log(userForm.value)
+      },
     }
   },//Fin setup
 }
