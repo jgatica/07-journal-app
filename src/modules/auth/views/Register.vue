@@ -33,8 +33,16 @@
 </template>
 
 <script>
-export default {
+import {ref} from 'vue'
 
+export default {
+  setup () {
+    const userForm = ref({
+      name: '',
+      email: '',
+      password: '',
+    })
+  },
 }
 </script>
 
