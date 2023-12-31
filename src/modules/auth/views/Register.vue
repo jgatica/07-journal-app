@@ -13,7 +13,7 @@
     </div>
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese correo">
-      <input v-model="userForm.email" class="input100" type="password" placeholder="Correo" required>
+      <input v-model="userForm.email" class="input100" type="email" placeholder="Correo" required>
       <span class="focus-input100" data-placeholder="&#xe818;"></span>
     </div>
 
