@@ -42,7 +42,11 @@ export default {
       email: '',
       password: '',
     })
-  },
+
+    return {
+      userForm,
+    }
+  },//Fin setup
 }
 </script>
 
