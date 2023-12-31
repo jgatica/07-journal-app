@@ -5,12 +5,12 @@
   <form class="login100-form validate-form p-b-33 p-t-5">
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese su nombre">
-      <input class="input100" type="text" placeholder="Correo" required>
+      <input class="input100" type="text" placeholder="Nombre" required>
       <span class="focus-input100" data-placeholder="&#xe82a;"></span>
     </div>
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese correo">
-      <input class="input100" type="password" placeholder="Contraseña" required>
+      <input class="input100" type="password" placeholder="Correo" required>
       <span class="focus-input100" data-placeholder="&#xe818;"></span>
     </div>
 
