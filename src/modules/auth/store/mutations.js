@@ -11,5 +11,5 @@ export const loginUser = (state, { user, idToken, refreshToken }) => {
 
   state.user = user
   state.status = 'authenticated'
-   
+
 } // Fin loginUser
