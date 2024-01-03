@@ -38,6 +38,7 @@
 <script>
 import { ref } from 'vue'
 import useAuth from '@/modules/auth/composables/useAuth'
+import Swal from 'sweetalert2'
 
 export default {
   setup () {
@@ -54,6 +55,8 @@ export default {
       onSubmit: async () => {
         const { ok, message } = await createUser(userForm.value)
         console.log(ok, message)
+
+        if (!ok) Swal.fire('Error', message, 'error')
       },
     }
   },//Fin setup
