@@ -25,7 +25,9 @@ export const signInUser = async ({ commit }, user) => {
 
   try {
     const { data } = await authApi.post(':signInWithPassword', { email, password, returnSecureToken: true })
-    const { idToken, refreshToken } = data
+    const { displayName, idToken, refreshToken } = data
+
+    user.name = displayName
 
     commit('loginUser', { user, idToken, refreshToken })
 

@@ -3,7 +3,7 @@
     Ingresar
   </span>
   <form
-    @submit.prevent="onSubmit()"
+    @submit.prevent="onSubmit"
     class="login100-form validate-form p-b-33 p-t-5"
   >
 
@@ -32,15 +32,17 @@
 
 <script>
 import { ref } from 'vue'
-import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
+
+import useAuth from '@/modules/auth/composables/useAuth'
 
 export default {
   name: 'Login',
   setup () {
-    const store = useStore()
     const router = useRouter()
+
+    const { loginUser } = useAuth()
 
     const userForm = ref({
       email: 'ana@mail.com',
@@ -50,7 +52,7 @@ export default {
     return {
       userForm,
       onSubmit: async () => {
-        const { ok, message } = await store.dispatch('auth/signInUser', userForm.value)
+        const { ok, message } = await loginUser(userForm.value)
         console.log({ ok, message })
         if ( !ok) await Swal.fire('Error', message, 'error')
         else await router.push({ name: 'no-entry' })
