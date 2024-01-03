@@ -3,9 +3,8 @@ import journalApi from "@/api/journalApi";
 export const loadEntries = async ({commit}) => {
   const {data} = await journalApi.get('/entries.json')
   const entries = []
-  console.log(data)
+
   if (data) {
-    console.log('jagl1')
     for (let id of Object.keys(data)) {
       entries.push({
         id,
