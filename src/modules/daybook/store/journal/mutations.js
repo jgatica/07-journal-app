@@ -28,3 +28,7 @@ export const addEntry = (state, entry) => {
 export const deleteEntry = async (state, id) => {
   state.entries = state.entries.filter(entry => entry.id !== id )
 }
+
+export const clearEntries = async (state) => {
+  state.entries = []
+}
