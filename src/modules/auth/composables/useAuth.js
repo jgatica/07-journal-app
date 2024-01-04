@@ -12,13 +12,18 @@ const useAuth = () => {
   const checkAuthStatus = async() => {
     return await store.dispatch('auth/checkAuthentication')
   }
+  const logout = () => {
+    store.commit('auth/logout')
+  }
 
   return {
     createUser,
     loginUser,
     checkAuthStatus,
+    logout,
 
-    authStatus: computed(() => store.getters['auth/currentState'])
+    authStatus: computed(() => store.getters['auth/currentState']),
+    username: computed(() => store.getters['auth/username']),
   }
 }
 
