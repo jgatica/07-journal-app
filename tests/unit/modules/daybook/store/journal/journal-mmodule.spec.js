@@ -1,12 +1,11 @@
-import {createStore} from "vuex";
-import journal from "@/modules/daybook/store/journal";
-import journalState from "../../../../mock-data/test-journal-state";
+import { createStore } from 'vuex'
+import journal from '@/modules/daybook/store/journal'
+import journalState from '../../../../mock-data/test-journal-state'
 
 const createVuexStore = (initialState) => createStore({
   modules: {
     journal: {
-      ...journal,
-      state: {...initialState} // 👈 Sobrescribe al state que esta desectucturado arriba
+      ...journal, state: { ...initialState } // 👈 Sobrescribe al state que esta desectucturado arriba
     },
   }
 }) // Fin createVuexStore
@@ -15,16 +14,15 @@ describe('Vuex - Pruebas en el Journal Module', () => {
 
   it('este es el estado inicial, debe tener este state ', () => {
     const store = createVuexStore(journalState)
-    const {isLoading, entries} = store.state.journal
+    const { isLoading, entries } = store.state.journal
 
     expect(isLoading).toBe(true)
     expect(entries).toEqual(journalState.entries)
-  });
+  })
 
   it('se agregar 3 entradas - mutation: setEntries', () => {
     const store = createVuexStore({
-      isLoading: true,
-      entries: [],
+      isLoading: true, entries: [],
     })
 
     store.commit('journal/setEntries', journalState.entries)
@@ -32,15 +30,13 @@ describe('Vuex - Pruebas en el Journal Module', () => {
     expect(store.state.journal.entries.length).toBe(3)
     expect(store.state.journal.isLoading).toBeFalsy()
 
-  });
+  })
 
   it('actualizar entrada mutation: updateEntry', () => {
     const store = createVuexStore(journalState)
 
     const updatedEntry = {
-      id: '-Nlmoug_xoyMBm3jZe40',
-      date: 1702733088465,
-      text: 'Ejemplo modificado',
+      id: '-Nlmoug_xoyMBm3jZe40', date: 1702733088465, text: 'Ejemplo modificado',
     }
 
     store.commit('journal/updateEntry', updatedEntry)
@@ -48,15 +44,13 @@ describe('Vuex - Pruebas en el Journal Module', () => {
     expect(store.state.journal.entries.length).toBe(3)
     expect(store.state.journal.entries.find(el => el.id === updatedEntry.id)).toEqual(updatedEntry)
 
-  });
+  })
 
   it('mutation: addEntry y deleteEntry ', () => {
     const store = createVuexStore(journalState)
 
     const entry = {
-      id: 'ABC-123',
-      date: 1702733088465,
-      text: 'Ejemplo modificado',
+      id: 'ABC-123', date: 1702733088465, text: 'Ejemplo modificado',
     }
 
     store.commit('journal/addEntry', entry)
@@ -75,7 +69,7 @@ describe('Vuex - Pruebas en el Journal Module', () => {
     const resultDel = store.state.journal.entries.map(el => el.id)
     expect(resultDel.includes(entry.id)).toBe(false)
 
-  });
+  })
 
   it('Getters: getEntriesByTerm getEntryById', () => {
     const store = createVuexStore(journalState)
@@ -85,48 +79,40 @@ describe('Vuex - Pruebas en el Journal Module', () => {
 
     const [, entry2,] = store.state.journal.entries
     expect(store.getters['journal/getEntryById']('-Nlmozeu7BNELg2KUuBl')).toEqual(entry2)
-  });
+  })
 
   it('actions: loadEntries', async () => {
     const store = createVuexStore({
-      isLoading: true,
-      entries: [],
+      isLoading: true, entries: [],
     })
 
     await store.dispatch('journal/loadEntries')
 
     expect(store.state.journal.entries.length).toBe(3)
 
-  });
+  })
 
   it('actions: updateEntry', async () => {
     const store = createVuexStore(journalState)
 
     const entry = {
-      id: '-Nlmp31-N1n1mqnyhSj-',
-      date: 1702733088465,
-      text: 'Ejemplo tres',
-      otroCampo: true,
+      id: '-Nlmp31-N1n1mqnyhSj-', date: 1702733088465, text: 'Ejemplo tres', otroCampo: true,
     }
 
     await store.dispatch('journal/updateEntry', entry)
 
     expect(store.state.journal.entries.length).toBe(3)
     expect(store.state.journal.entries.find(el => el.id === entry.id)).toEqual({
-      id: '-Nlmp31-N1n1mqnyhSj-',
-      date: 1702733088465,
-      text: 'Ejemplo tres',
+      id: '-Nlmp31-N1n1mqnyhSj-', date: 1702733088465, text: 'Ejemplo tres',
     })
 
-  });
+  })
 
   it('actions: createEntry y deleteEntry', async () => {
     const store = createVuexStore(journalState)
 
     const entry = {
-      date: 1802733088001,
-      text: 'Ejemplo',
-      picture:'aca va el enlace',
+      date: 1802733088001, text: 'Ejemplo', picture: 'aca va el enlace',
     }
 
     const respId = await store.dispatch('journal/createEntry', entry)
@@ -142,6 +128,5 @@ describe('Vuex - Pruebas en el Journal Module', () => {
     // La nueva entrada NO debe existir
     expect(store.state.journal.entries.find(el => el.id === respId)).toBeFalsy()
 
-
-  });
-});
+  })
+})
