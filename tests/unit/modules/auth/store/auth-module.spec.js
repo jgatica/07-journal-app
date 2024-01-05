@@ -98,7 +98,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
-  it('Actions: createUser signInUser - Crea el usuario', async () => {
+  it.only('Actions: createUser signInUser - Crea el usuario', async () => {
 
     const store = createVuexStore({
       status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
@@ -117,6 +117,11 @@ describe('Vuex: Pruebas en el auth-module', () => {
     const deleteResp = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyBIK79kdSDaaLnY4Qhg0_WJsfcQMOxMa7g`, {
       idToken
     })
+
+    // Crear usuario
+    const resp = await store.dispatch('auth/createUser', payload)
+
+    console.log(resp)
 
   })
 
