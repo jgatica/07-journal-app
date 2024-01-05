@@ -121,8 +121,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
     // Crear usuario
     const resp = await store.dispatch('auth/createUser', payload)
 
-    console.log(resp)
-
+    expect(resp).toEqual({ ok: true })
   })
 
 })
