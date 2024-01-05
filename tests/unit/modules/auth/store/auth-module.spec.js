@@ -71,4 +71,22 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
+  // Actions
+  it('Actions: createUser - Error usuario ya existe', async () => {
+
+    const store = createVuexStore({
+      status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
+      user: null,
+      idToken: null,
+      refreshToken: null,
+    })
+
+    const payload = { name: 'Test User', email: 'test@test.com', password: '123456' }
+
+    const resp = await store.dispatch('auth/createUser', payload)
+
+    expect(resp).toEqual({ ok: false, message: 'EMAIL_EXISTS' })
+
+  })
+
 })
