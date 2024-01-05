@@ -122,6 +122,14 @@ describe('Vuex: Pruebas en el auth-module', () => {
     const resp = await store.dispatch('auth/createUser', payload)
 
     expect(resp).toEqual({ ok: true })
+
+    const { status, user, idToken:token, refreshToken } = store.state.auth
+
+    expect(status).toBe('authenticated')
+    expect(user).toMatchObject({ name: 'Test User', email: 'test2@test.com' })
+    expect(typeof token).toBe('string')
+    expect(typeof refreshToken).toBe('string')
+
   })
 
 })
