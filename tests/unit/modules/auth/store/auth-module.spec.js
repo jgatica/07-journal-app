@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 import createVuexStore from '../../../mock-data/mock-store'
 
 describe('Vuex: Pruebas en el auth-module', () => {
@@ -112,6 +114,9 @@ describe('Vuex: Pruebas en el auth-module', () => {
     const { idToken } = store.state.auth
 
     // Borrar usuario
+    const deleteResp = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyBIK79kdSDaaLnY4Qhg0_WJsfcQMOxMa7g`, {
+      idToken
+    })
 
   })
 
