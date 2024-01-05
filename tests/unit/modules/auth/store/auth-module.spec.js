@@ -87,6 +87,13 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
     expect(resp).toEqual({ ok: false, message: 'EMAIL_EXISTS' })
 
+    const { status, user, idToken, refreshToken } = store.state.auth
+
+    expect(status).toBe('not-authenticated')
+    expect(user).toBe(null)
+    expect(idToken).toBe(null)
+    expect(refreshToken).toBe(null)
+
   })
 
 })
