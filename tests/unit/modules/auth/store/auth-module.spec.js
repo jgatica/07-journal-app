@@ -96,4 +96,21 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
+  it('Actions: createUser signInUser - Crea el usuario', () => {
+
+    const store = createVuexStore({
+      status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
+      user: null,
+      idToken: null,
+      refreshToken: null,
+    })
+
+    const payload = { name: 'Test User', email: 'test2@test.com', password: '123456' }
+
+    // SignIn
+
+    // Borrar usuario
+
+  })
+
 })
