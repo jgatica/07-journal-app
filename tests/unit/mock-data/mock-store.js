@@ -5,11 +5,17 @@ import journal from '@/modules/daybook/store/journal'
 
 import { journalState } from './test-journal-state'
 
-const createVuexStore = () =>
+const createVuexStore = (authInitState, journalInitState = journalState) =>
   createStore({
     modules: {
-      auth,
-      journal,
+      auth: {
+        ...auth,
+        state: { ...authInitState },
+      },
+      journal: {
+        ...journal,
+        state: { ...journalInitState }
+      },
     }
   }) // Fin createVuexStore
 
