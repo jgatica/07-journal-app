@@ -45,4 +45,15 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
+  it('Mutation: logout', () => {
+
+    const store = createVuexStore({
+      status: 'authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
+      user: { name: 'Jorge', email: 'jorge@test.com' },
+      idToken: 'abc-123',
+      refreshToken: 'xyz-123',
+    })
+
+  })
+
 })
