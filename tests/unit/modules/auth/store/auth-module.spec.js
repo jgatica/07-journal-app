@@ -54,6 +54,15 @@ describe('Vuex: Pruebas en el auth-module', () => {
       refreshToken: 'xyz-123',
     })
 
+    store.commit('auth/logout')
+
+    const { status, user, idToken, refreshToken } = store.state.auth
+
+    expect(status).toBe('not-authenticated')
+    expect(user).toBe(null)
+    expect(idToken).toBe(null)
+    expect(refreshToken).toBe(null)
+
   })
 
 })
