@@ -123,12 +123,23 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
     expect(resp).toEqual({ ok: true })
 
-    const { status, user, idToken:token, refreshToken } = store.state.auth
+    const { status, user, idToken: token, refreshToken } = store.state.auth
 
     expect(status).toBe('authenticated')
     expect(user).toMatchObject({ name: 'Test User', email: 'test2@test.com' })
     expect(typeof token).toBe('string')
     expect(typeof refreshToken).toBe('string')
+
+  })
+
+  it('Actions: checkAuthentication - POSITIVA', () => {
+
+    const store = createVuexStore({
+      status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
+      user: null,
+      idToken: null,
+      refreshToken: null,
+    })
 
   })
 
