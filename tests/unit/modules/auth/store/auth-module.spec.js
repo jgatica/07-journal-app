@@ -132,7 +132,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
-  it.only('Actions: checkAuthentication - POSITIVA', async () => {
+  it('Actions: checkAuthentication - POSITIVA', async () => {
 
     const store = createVuexStore({
       status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
@@ -153,7 +153,13 @@ describe('Vuex: Pruebas en el auth-module', () => {
     localStorage.setItem('idToken', idToken)
     const checkResp = await store.dispatch('auth/checkAuthentication')
 
-    console.log(checkResp)
+    expect(checkResp).toEqual({ ok: true })
+
+    const { status, user, idToken: token, refreshToken } = store.state.auth
+
+    expect(status).toBe('authenticated')
+    expect(user).toEqual({ name: 'User Test', email: 'test@test.com' })
+    expect(typeof token).toBe('string')
 
   })
 
