@@ -10,6 +10,8 @@ jest.mock('vuex', () => ({
 
 describe('Pruebas en useAuth', () => {
 
+  beforeEach(() => jest.clearAllMocks())
+
   it('createUser exitoso', () => {
 
   })
