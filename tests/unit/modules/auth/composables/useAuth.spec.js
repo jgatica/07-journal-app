@@ -13,14 +13,17 @@ describe('Pruebas en useAuth', () => {
   beforeEach(() => jest.clearAllMocks())
 
   it('createUser exitoso', async () => {
+
     const { createUser } = useAuth()
 
     // Llamar al createUser *no importa si el usuario existe xq estoy simulando todo el vuex
     const newUser = { name: 'Jorge', email: 'jorge@mail.com' }
+    mockStore.dispatch.mockReturnValue({ ok: true })
 
     const resp = await createUser(newUser)
 
-    expect(mockStore.dispatch).toHaveBeenCalledWith("auth/createUser", {"email": "jorge@mail.com", "name": "Jorge"})
+    expect(mockStore.dispatch).toHaveBeenCalledWith('auth/createUser', { 'email': 'jorge@mail.com', 'name': 'Jorge' })
+    expect(resp).toEqual({ ok: true })
 
   })
 
