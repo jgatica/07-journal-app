@@ -27,4 +27,19 @@ describe('Pruebas en useAuth', () => {
 
   })
 
+  it('createUser fallido, email ya existe', async () => {
+
+    const { createUser } = useAuth()
+
+    // Llamar al createUser *no importa si el usuario existe xq estoy simulando todo el vuex
+    const newUser = { name: 'Jorge', email: 'jorge@mail.com' }
+    mockStore.dispatch.mockReturnValue({ ok: false, message: 'EMAIL_EXISTS' })
+
+    const resp = await createUser(newUser)
+
+    expect(mockStore.dispatch).toHaveBeenCalledWith('auth/createUser', newUser)
+    expect(resp).toEqual({ ok: false, message: 'EMAIL_EXISTS' })
+
+  })
+
 })
