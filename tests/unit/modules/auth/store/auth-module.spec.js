@@ -150,6 +150,10 @@ describe('Vuex: Pruebas en el auth-module', () => {
     const { idToken } = store.state.auth
     store.commit('auth/logout')
 
+    localStorage.setItem('idToken', idToken)
+    const checkResp = await store.dispatch('auth/checkAuthentication')
+
+    console.log(checkResp)
 
   })
 
