@@ -182,6 +182,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
     const checkResp2 = await store.dispatch('auth/checkAuthentication')
 
     expect(checkResp2).toEqual({ ok: false, message: 'INVALID_ID_TOKEN' })
+    expect(store.state.auth.status).toBe('not-authenticated')
 
   })
 
