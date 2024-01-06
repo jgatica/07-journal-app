@@ -132,7 +132,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
-  it('Actions: checkAuthentication - POSITIVA', () => {
+  it.only('Actions: checkAuthentication - POSITIVA', async () => {
 
     const store = createVuexStore({
       status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
@@ -140,6 +140,16 @@ describe('Vuex: Pruebas en el auth-module', () => {
       idToken: null,
       refreshToken: null,
     })
+
+    // SignIn para obtener idToken
+    const signInResp = await store.dispatch('auth/signInUser', {
+      email: 'test@test.com', password: '123456',
+    })
+
+    // Obtengo idToken y vacío lo demás
+    const { idToken } = store.state.auth
+    store.commit('auth/logout')
+
 
   })
 
