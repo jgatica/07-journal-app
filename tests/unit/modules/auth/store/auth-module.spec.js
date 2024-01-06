@@ -98,7 +98,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
-  it.only('Actions: createUser signInUser - Crea el usuario', async () => {
+  it('Actions: createUser signInUser - Crea el usuario', async () => {
 
     const store = createVuexStore({
       status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
