@@ -178,6 +178,11 @@ describe('Vuex: Pruebas en el auth-module', () => {
     expect(checkResp1).toEqual({ ok: false, message: 'No hay token' })
     expect(store.state.auth.status).toBe('not-authenticated')
 
+    localStorage.setItem('idToken', 'xyz123456')
+    const checkResp2 = await store.dispatch('auth/checkAuthentication')
+
+    expect(checkResp2).toEqual({ ok: false, message: 'INVALID_ID_TOKEN' })
+
   })
 
 })
