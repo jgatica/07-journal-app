@@ -163,7 +163,7 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
-  it('Actions: checkAuthentication - NEGATIVA', () => {
+  it('Actions: checkAuthentication - NEGATIVA', async () => {
 
     const store = createVuexStore({
       status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
@@ -171,6 +171,12 @@ describe('Vuex: Pruebas en el auth-module', () => {
       idToken: null,
       refreshToken: null,
     })
+
+    localStorage.removeItem('idToken')
+    const checkResp1 = await store.dispatch('auth/checkAuthentication')
+
+    expect(checkResp1).toEqual({ ok: false, message: 'No hay token' })
+    expect(store.state.auth.status).toBe('not-authenticated')
 
   })
 
