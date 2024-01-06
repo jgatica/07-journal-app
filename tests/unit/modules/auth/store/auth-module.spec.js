@@ -163,4 +163,15 @@ describe('Vuex: Pruebas en el auth-module', () => {
 
   })
 
+  it('Actions: checkAuthentication - NEGATIVA', () => {
+
+    const store = createVuexStore({
+      status: 'not-authenticated', // 'authenticated', 'not-authenticated', 'authenticating'
+      user: null,
+      idToken: null,
+      refreshToken: null,
+    })
+
+  })
+
 })
