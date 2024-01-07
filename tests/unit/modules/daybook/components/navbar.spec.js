@@ -2,22 +2,13 @@ import { shallowMount } from '@vue/test-utils'
 import Navbar from '@/modules/daybook/components/Navbar.vue'
 import createVuexStore from '../../../mock-data/mock-store'
 
-import {
-  VueRouterMock,
-  createRouterMock,
-  injectRouterMock,
-} from 'vue-router-mock'
-import { config } from '@vue/test-utils'
+const mockRouter = {
+  push: jest.fn(),
+}
 
-// create one router per test file
-const router = createRouterMock()
-beforeEach(() => {
-  router.reset() // reset the router state
-  injectRouterMock(router)
-})
-
-// Add properties to the wrapper
-config.plugins.VueWrapper.install(VueRouterMock)
+jest.mock('vue-router', () => ({
+  useRouter: () => mockRouter,
+}))
 
 describe('Pruebas en el Navbar component', () => {
 
@@ -54,8 +45,8 @@ describe('Pruebas en el Navbar component', () => {
     await wrapper.find('button').trigger('click')
 
     // Evaluar el router
-    expect(wrapper.router.push).toHaveBeenCalledWith({ 'name': 'login' })
-
+    expect(mockRouter.push).toHaveBeenCalledTimes(1)
+    expect(mockRouter.push).toHaveBeenCalledWith({ 'name': 'login' })
     expect(store.state.auth).toEqual({
       user: null,
       status: 'not-authenticated',
