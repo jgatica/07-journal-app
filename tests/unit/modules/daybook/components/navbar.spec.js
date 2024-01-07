@@ -26,4 +26,14 @@ describe('Pruebas en el Navbar component', () => {
 
   })
 
+  it.only('click en logout, debe cerrar sesión y redireccionar ', () => {
+
+    const wrapper = shallowMount(Navbar, {
+      global: {
+        plugins: [store],
+      }
+    })
+
+  })
+
 })
