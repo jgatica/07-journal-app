@@ -15,7 +15,15 @@ describe('Pruebas en el Navbar component', () => {
   })
 
   it('debe mostrar el componente correctamente', () => {
-    const wrapper = shallowMount(Navbar)
+
+    const wrapper = shallowMount(Navbar, {
+      global: {
+        plugins: [store],
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
   })
 
 })
