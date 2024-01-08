@@ -28,6 +28,9 @@ describe('Pruebas en el Login Component', () => {
     refreshToken: null,
   })
 
+  store.dispatch = jest.fn(
+
+  )
   beforeEach(() => jest.clearAllMocks())
 
   it('debe hacer match con el SnapShot', () => {
