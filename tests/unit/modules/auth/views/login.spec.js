@@ -42,4 +42,16 @@ describe('Pruebas en el Login Component', () => {
 
   })
 
+  it('credenciales incorrectas, disparar el SWAL', async () => {
+
+    const wrapper = shallowMount(Login, {
+      global: {
+        plugins: [store],
+      }
+    })
+
+    await wrapper.trigger('submit')
+
+  })
+
 })
