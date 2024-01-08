@@ -28,6 +28,8 @@ describe('Pruebas en el Login Component', () => {
     refreshToken: null,
   })
 
+  beforeEach(() => jest.clearAllMocks())
+
   it('debe hacer match con el SnapShot', () => {
 
     const wrapper = shallowMount(Login, {
