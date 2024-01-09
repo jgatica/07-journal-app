@@ -53,7 +53,9 @@ describe('Pruebas en el Login Component', () => {
       }
     })
 
-    await wrapper.trigger('submit')
+    await wrapper.find('form').trigger('submit')
+
+    expect(store.dispatch).toHaveBeenCalledWith()
 
   })
 
